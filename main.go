@@ -44,7 +44,7 @@ func main() {
 		if err != nil {
 			panic(err.Error())
 		}
-		if erros.IsNotFound(err) {
+		if errors.IsNotFound(err) {
 			fmt.Printf("Deployment not found\n")
 		} else if statusError, isStatus := err.(*errors.StatusError); isStatus {
 			fmt.Printf("Error getting deployment%v\n", statusError.ErrStatus.Message)
@@ -57,7 +57,7 @@ func main() {
 			oldreplicas := *result.Spec.Replicas
 			fmt.Println("old replicas ->", oldreplicas)
 			fmt.Println("New replicas ->", *replicas)
-			*result.Spec.Replicas = int32(*relicas)
+			*result.Spec.Replicas = int32(*replicas)
 			if *image != "" {
 				*result.Spec.Template.Spec.Containers[0].Image = *image
 			}
