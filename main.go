@@ -13,7 +13,8 @@ import (
 )
 
 func main() {
-	var ns, deployment, image, replicas string
+	var ns, deployment, image string
+	var replicas int
 	flag.StringVar(&ns, "namespace", "default", "namespace")
 	flag.StringVar(&deployment, "deployment", "", "deployment")
 	flag.StringVar(&image, "image", "", "image")
