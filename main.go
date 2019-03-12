@@ -17,7 +17,7 @@ func main() {
 	flag.StringVar(&ns, "namespace", "default", "namespace")
 	flag.StringVar(&deployment, "deployment", "", "deployment")
 	flag.StringVar(&image, "image", "", "image")
-	flag.StringVar(&replicas, "replicas", "0", "replicas")
+	flag.IntVar(&replicas, "replicas", 0, "replicas")
 	flag.Parse()
 
 	if deployment == "" {
@@ -40,7 +40,7 @@ func main() {
 	retryErr := retry.RetryOnConflict(retry.DefaultRetry, func() error {
 		var updateErr error
 
-		result, err := deploymentsClient.Get(deployment, metav1.Getoptions{})
+		result, err := deploymentsClient.Get(deployment, metav1.GetOptions{})
 		if err != nil {
 			panic(err.Error())
 		}
