@@ -17,7 +17,7 @@ func main() {
 	flag.StringVar(&ns, "namespace", "default", "namespace")
 	flag.StringVar(&deployment, "deployment", "", "deployment")
 	flag.StringVar(&image, "image", "", "image")
-	flag.StringVar(&replicas, "replicas", 0, "replicas")
+	flag.StringVar(&replicas, "replicas", "0", "replicas")
 	flag.Parse()
 
 	if *deployment == "" {
@@ -30,7 +30,7 @@ func main() {
 		panic(err.Error())
 	}
 
-	clientset, err := rest.InClusterConfig(config)
+	clientset, err := kubernetes.NewForConfig(config)
 	if err != nil {
 		panic(err.Error())
 	}
