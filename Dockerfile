@@ -8,7 +8,10 @@ RUN apk update && apk add --no-cache git && \
     go get github.com/golang/dep/cmd/dep && \
     /go/bin/dep init &&
     rm -rf Gopkg.toml && \
-    /go/bin/dep ensure && \
+
+COPY ['main.go','Gopkg.toml','./']
+
+RUN /go/bin/dep ensure && \
     go build -o deployment_scaler ./main.go && \
     apk del --purge build-dependencies && \
     rm -rf /tmp/*
