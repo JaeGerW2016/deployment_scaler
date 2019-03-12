@@ -60,7 +60,7 @@ func main() {
 			fmt.Println("New replicas ->", replicas)
 			*result.Spec.Replicas = int32(replicas)
 			if image != "" {
-				*result.Spec.Template.Spec.Containers[0].Image = image
+				result.Spec.Template.Spec.Containers[0].Image = image
 			}
 			_, updateErr := deploymentsClient.Update(result)
 			fmt.Println(updateErr)
