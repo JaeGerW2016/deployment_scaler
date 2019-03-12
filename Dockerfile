@@ -1,4 +1,4 @@
-FROM golang:alpine as bulider
+FROM golang:alpine as builder
 
 WORKDIR /go/src/deployment_scaler
 
