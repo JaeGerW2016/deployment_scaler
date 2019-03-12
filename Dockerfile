@@ -16,7 +16,7 @@ FROM alpine:latest
 
 WORKDIR /root
 
-COPY --from=builder /go/src/deployment_scaler/deploment_scaler .
+COPY --from=builder /go/src/deployment_scaler/deployment_scaler .
 
 RUN chmod +x /root/deployment_scaler
 
