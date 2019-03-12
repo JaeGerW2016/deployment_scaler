@@ -2,7 +2,7 @@ FROM golang:alpine as bulider
 
 WORKDIR /go/src/deployment_scaler
 
-RUN apk update && apk add --no-cache git && \
+RUN apk update && apk add --no-cache --virtual build-dependencies git && \
     go get github.com/golang/dep/cmd/dep && \
     /go/bin/dep init &&
     rm -rf Gopkg.toml && \
