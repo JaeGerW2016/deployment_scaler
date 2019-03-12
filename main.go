@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	var ns, deployment, image, relicas string
+	var ns, deployment, image, replicas string
 	flag.StringVar(&ns, "namespace", "default", "namespace")
 	flag.StringVar(&deployment, "deployment", "", "deployment")
 	flag.StringVar(&image, "image", "", "image")
@@ -67,7 +67,7 @@ func main() {
 		return updateErr
 	})
 	if retryErr != nil {
-		panic(fmt.Errof("Update deployment failed: %v", retryErr))
+		panic(fmt.Errorf("Update deployment failed: %v", retryErr))
 	}
 	fmt.Println("Update deployment...")
 }
