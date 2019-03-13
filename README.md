@@ -7,7 +7,7 @@ docker build -t 314315960/deployment_scaler .
 
 ### Create CronJob On Kubernetes
 ```
-piVersion: batch/v1beta1
+apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: scale-myapp
